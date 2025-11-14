@@ -1,9 +1,9 @@
 def generate_profile(age):
-    if age >= 0 and age <= 12:
+    if 0 <= age <= 12:
         return "Child"
-    elif age >= 13 and age <=19:
+    elif 13 <= age <= 19:
         return "Teenager"
-    elif age >= 20:
+    else:
         return "Adult"
 
 user_name = input("Hello! Please, enter your full name:")
@@ -21,7 +21,7 @@ while True:
 life_stage = generate_profile(current_age)
 user_profile = {"name": user_name, "age": current_age, "stage": life_stage, "hobbies": hobbies}
 
-print("---\nProfile Summary:")
+print("\n---\nProfile Summary:")
 print(f"Name: {user_profile["name"]}")
 print(f"Age: {user_profile["age"]}")
 print(f"Life Stage: {user_profile["stage"]}")
