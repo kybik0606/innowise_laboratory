@@ -43,7 +43,22 @@ while(True):
             else:
                 print("There is no student with that name.")
         elif(choice_int == 3):
-            print("3")
+            average = []
+            print("--- Student Report ---")
+            if students:
+                for student in students:
+                    try:
+                        average_grade = sum(student["grades"]) / len(student["grades"])
+                        average.append(average_grade)
+                    except ZeroDivisionError:
+                        average_grade = "N/A"
+                    print(f"{student["name"]}'s average grade is {average_grade}.")
+            else:
+                print("The list of students is empty.")
+            print("----------------------")
+            print(f"Max average: {max(average)}.")
+            print(f"Min average: {min(average)}.")
+            print(f"Overall average: {sum(average) / len(average)}.")
         elif(choice_int == 4):
             print("4")
         elif(choice_int == 5):
