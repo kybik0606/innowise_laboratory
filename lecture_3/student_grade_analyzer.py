@@ -18,7 +18,6 @@ while(True):
             else:
                 new_student = {"name": name, "grades": []}
                 students.append(new_student)
-                print(students)
         elif(choice_int == 2):
             name = input("Enter student name: ").strip()
             found_student = None
@@ -53,14 +52,30 @@ while(True):
                     except ZeroDivisionError:
                         average_grade = "N/A"
                     print(f"{student["name"]}'s average grade is {average_grade}.")
+                print("----------------------")
+                if len(average) > 0:
+                    print(f"Max average: {max(average)}.")
+                    print(f"Min average: {min(average)}.")
+                    print(f"Overall average: {sum(average) / len(average)}.")
+                else:
+                    print("No students with grades.")
             else:
                 print("The list of students is empty.")
-            print("----------------------")
-            print(f"Max average: {max(average)}.")
-            print(f"Min average: {min(average)}.")
-            print(f"Overall average: {sum(average) / len(average)}.")
+                print("----------------------")
         elif(choice_int == 4):
-            print("4")
+            if students:
+                students_with_grades = []
+                for student in students:
+                    if len(student["grades"]) > 0:
+                        students_with_grades.append(student)
+                if students_with_grades:
+                    top_student = max(students_with_grades,
+                                      key=lambda student: sum(student["grades"]) / len(student["grades"]))
+                    print(f"The student with the highest average is {top_student["name"]} with a grade of {sum(top_student["grades"]) / len(top_student["grades"])}.")
+                else:
+                    print("No students with grades.")
+            else:
+                print("The list of students is empty.")
         elif(choice_int == 5):
             print("Exiting program.")
             break
